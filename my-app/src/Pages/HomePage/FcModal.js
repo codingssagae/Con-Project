@@ -2,12 +2,21 @@ import React from 'react';
 import '../HomePage/FcModal.css';
 import { styled } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const FcModal = ({ date, onClose, style, eventTitle }) => {
   const selectedDate = new Date(date);
   const formattedDate = `${selectedDate.getMonth() + 1}월 ${selectedDate.getDate()}일`;
+
+  const circleStyle = {
+    display: 'inline-block',
+    width: '12px',
+    height: '12px',
+    borderRadius: '50%',
+    backgroundColor: '#610097',
+    marginRight: '10px',
+  };
 
   const EventTitleContainer = styled.div`
     border-bottom: 1px solid #D5D5D5;
@@ -19,6 +28,9 @@ const FcModal = ({ date, onClose, style, eventTitle }) => {
     margin-bottom: 5px;
     flex-grow: 1;
     span {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
       margin-left: 8px; /* 간격 조정 */
     }
   `;
@@ -47,10 +59,16 @@ const FcModal = ({ date, onClose, style, eventTitle }) => {
             <TitleText>
               {eventTitle.map((title) => (
                 <EventTitleContainer key={title}>
-                  {title}
                   <span>
-                  <Link to="/record-con" style={{color:'black'}}>
-                    <MoreVertIcon ><FontAwesomeIcon icon={faPenToSquare} /></MoreVertIcon></Link>
+                    <span style={circleStyle}></span>
+                    {title}
+                  </span>
+                  <span>
+                    <Link to="/record-con" style={{ color: 'black' }}>
+                      <MoreVertIcon>
+                        <FontAwesomeIcon icon={faPenToSquare} />
+                      </MoreVertIcon>
+                    </Link>
                   </span>
                 </EventTitleContainer>
               ))}
@@ -63,9 +81,6 @@ const FcModal = ({ date, onClose, style, eventTitle }) => {
 };
 
 export default FcModal;
-
-
-
 
 const FcModalCorn = styled.div`
   height: 30px;

@@ -37,7 +37,8 @@ const MyInformation = ()=>{
                                 </label></div>
                         </div>
                     </div>
-                    <div className="Info_Wrap_2_2"><h4>계정 삭제하기</h4></div>
+                    <Link to="/withdrawal" style={{textDecoration:'none', cursor: 'pointer', color:"black"}}>
+                    <div className="Info_Wrap_2_2" to={'/withdrawal'} id="withdrawal" onClick={clickHandler} settingpage={settingpage}><h4>회원탈퇴</h4></div></Link>
                 </div>
             </div>
         </div>
